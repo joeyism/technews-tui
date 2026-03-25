@@ -1,5 +1,9 @@
 # TechNews TUI
 
+[![CI](https://github.com/joeyism/technews-tui/actions/workflows/ci.yml/badge.svg)](https://github.com/joeyism/technews-tui/actions/workflows/ci.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/joeyism/technews-tui)](https://goreportcard.com/report/github.com/joeyism/technews-tui)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A beautiful terminal UI for Hacker News and Reddit, built with Go and Bubble Tea.
 
 ## Features
