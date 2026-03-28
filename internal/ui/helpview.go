@@ -79,6 +79,7 @@ var commentHelpEntries = []helpEntry{
 	{"↑/↓  j/k", "navigate comments"},
 	{"ctrl+u / ctrl+d", "half page up/down"},
 	{"enter / space", "fold/unfold thread"},
+	{"b", "expand/collapse post body"},
 	{"o", "open in browser"},
 	{"c", "open comments link"},
 	{"esc / q", "back to list"},

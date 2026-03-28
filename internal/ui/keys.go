@@ -3,21 +3,22 @@ package ui
 import "github.com/charmbracelet/bubbles/key"
 
 type keyMap struct {
-	Open     key.Binding
-	Back     key.Binding
-	Quit     key.Binding
-	Refresh  key.Binding
-	Toggle   key.Binding
-	Up       key.Binding
-	Down     key.Binding
-	HalfUp   key.Binding
-	HalfDown key.Binding
-	Settings key.Binding
-	Add      key.Binding
-	Delete   key.Binding
-	Filter   key.Binding
-	Help     key.Binding
-	Comments key.Binding
+	Open       key.Binding
+	Back       key.Binding
+	Quit       key.Binding
+	Refresh    key.Binding
+	Toggle     key.Binding
+	Up         key.Binding
+	Down       key.Binding
+	HalfUp     key.Binding
+	HalfDown   key.Binding
+	Settings   key.Binding
+	Add        key.Binding
+	Delete     key.Binding
+	Filter     key.Binding
+	Help       key.Binding
+	Comments   key.Binding
+	ExpandBody key.Binding
 }
 
 var keys = keyMap{
@@ -28,6 +29,10 @@ var keys = keyMap{
 	Comments: key.NewBinding(
 		key.WithKeys("c"),
 		key.WithHelp("c", "comments link"),
+	),
+	ExpandBody: key.NewBinding(
+		key.WithKeys("b"),
+		key.WithHelp("b", "expand post body"),
 	),
 	Back: key.NewBinding(
 		key.WithKeys("esc"),

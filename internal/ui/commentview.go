@@ -26,6 +26,7 @@ type CommentModel struct {
 	allComments  []model.Comment
 	flat         []flatComment
 	collapsedIDs map[string]bool
+	bodyExpanded bool
 	cursor       int
 	offset       int
 	width        int
@@ -91,6 +92,9 @@ func (m CommentModel) Update(msg tea.Msg) (CommentModel, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch {
+		case key.Matches(msg, keys.ExpandBody):
+			m.bodyExpanded = !m.bodyExpanded
+			m.flatten() // Re-flatten to adjust offset if needed, though not strictly necessary for header
 		case key.Matches(msg, keys.Up):
 			if m.cursor > 0 {
 				m.cursor--
@@ -194,8 +198,17 @@ func (m CommentModel) headerView() string {
 			maxWidth = 40
 		}
 		lines := wrapText(m.post.Text, maxWidth)
+		maxLines := 5
+		truncated := false
+		if !m.bodyExpanded && len(lines) > maxLines {
+			lines = lines[:maxLines]
+			truncated = true
+		}
 		body := commentTextStyle.Render(strings.Join(lines, "\n"))
 		parts = append(parts, "", body)
+		if truncated {
+			parts = append(parts, statusBarStyle.Render("  [b to expand post body...]"))
+		}
 	}
 
 	return lipgloss.JoinVertical(lipgloss.Left, parts...)
@@ -209,7 +222,13 @@ func (m CommentModel) headerHeight() int {
 		if maxWidth < 40 {
 			maxWidth = 40
 		}
-		h += 1 + len(wrapText(m.post.Text, maxWidth)) // blank line + text lines
+		lines := wrapText(m.post.Text, maxWidth)
+		maxLines := 5
+		if !m.bodyExpanded && len(lines) > maxLines {
+			h += 1 + maxLines + 1 // blank line + capped lines + hint line
+		} else {
+			h += 1 + len(lines) // blank line + text lines
+		}
 	}
 	return h
 }
