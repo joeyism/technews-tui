@@ -59,7 +59,7 @@ func NewSettingsModel(cfg *config.Config) SettingsModel {
 	}
 
 	ti := textinput.New()
-	ti.CharLimit = 50
+	ti.CharLimit = 200
 	ti.Width = 30
 
 	m := SettingsModel{
@@ -74,7 +74,7 @@ func (m *SettingsModel) rebuildRows() {
 	var rows []settingsRow
 
 	// Fixed order for stability
-	order := []string{"hn", "reddit", "lobsters", "lemmy", "devto"}
+	order := []string{"hn", "reddit", "lobsters", "lemmy", "devto", "rss"}
 
 	for _, id := range order {
 		sc, ok := m.cfg.Sources[id]

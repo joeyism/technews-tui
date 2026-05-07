@@ -84,6 +84,8 @@ func (m *RootModel) rebuildSources() {
 			m.sources = append(m.sources, api.NewLemmyClient(sc.Targets))
 		case "devto":
 			m.sources = append(m.sources, api.NewDevToClient())
+		case "rss":
+			m.sources = append(m.sources, api.NewRSSClient(sc.Targets))
 		}
 	}
 }

@@ -33,6 +33,7 @@ var ValidSorts = map[string][]string{
 	"lobsters": {"hottest", "newest"},
 	"lemmy":    {"Hot", "New", "Active", "TopDay", "TopWeek", "TopAll"},
 	"devto":    {"default", "latest", "top", "rising"},
+	"rss":      {"default"},
 }
 
 // Registry for backwards compatibility with existing UI code if needed
@@ -43,6 +44,9 @@ var (
 
 // DefaultSubreddits is the default list of subreddits to fetch.
 var DefaultSubreddits = []string{"programming", "linux", "opencodecli", "claudecode"}
+
+// DefaultRSSFeeds is the default list of RSS feeds to fetch.
+var DefaultRSSFeeds = []string{"https://lwn.net/headlines/rss", "https://feeds.arstechnica.com/arstechnica/technology-lab"}
 
 // Path returns the path to the config file.
 func Path() string {
@@ -142,6 +146,11 @@ func defaultConfig() *Config {
 			"devto": {
 				Enabled: true,
 				Sort:    "default",
+			},
+			"rss": {
+				Enabled: true,
+				Sort:    "default",
+				Targets: DefaultRSSFeeds,
 			},
 		},
 	}
