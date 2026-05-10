@@ -5,7 +5,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A beautiful terminal UI for Hacker News and Reddit, built with Go and Bubble Tea.
+A beautiful terminal UI for Hacker News, Reddit, LWN.net, Ars Technica, and any other RSS feed, built with Go and Bubble Tea.
 
 <p align="center" width="100%">
 <video src="https://github.com/user-attachments/assets/76d957f3-b39f-43ba-868b-0be3412030d3" width="80%" controls></video>
@@ -13,11 +13,24 @@ A beautiful terminal UI for Hacker News and Reddit, built with Go and Bubble Tea
 
 ## Features
 
-- **Multi-source:** Aggregates Hacker News and your favorite subreddits.
-- **Navigable Comment Trees:** Browse discussions with ease.
+- **Multi-source:** Aggregates Hacker News, Reddit, Lobsters, Lemmy, Dev.to, LWN.net, and Ars Technica — plus any RSS/Atom feed you add.
+- **Navigable Comment Trees:** Browse discussions with ease on HN, Reddit, Lobsters, Lemmy, and Dev.to.
 - **Fold/Unfold:** Collapse threads to focus on what matters.
-- **Customizable:** Add/remove subreddits and change sort order directly in the TUI.
+- **Customizable:** Add/remove subreddits, Lemmy instances, and RSS feeds directly in the TUI.
 - **Fast:** Concurrent fetching for all sources.
+
+## Sources
+
+| Source | Type | Comments | Default Feeds |
+|--------|------|----------|---------------|
+| Hacker News | API | Yes | — |
+| Reddit | API | Yes | r/programming, r/linux, r/opencodecli, r/claudecode |
+| Lobsters | API | Yes | — |
+| Lemmy | API | Yes | lemmy.ml, programming.dev |
+| Dev.to | API | Yes | — |
+| RSS | RSS/Atom | Browser | LWN.net headlines, Ars Technica Biz & IT |
+
+RSS feeds open in your default browser (press `o`). Add any RSS/Atom feed URL in Settings to pull in blogs, newsletters, or any site that publishes a feed.
 
 ## Installation
 
@@ -56,7 +69,7 @@ go install github.com/joeyism/technews-tui@latest
 - `↑/↓` or `j/k`: Navigate stories
 - `Enter`: View comments
 - `o`: Open link in browser
-- `Tab`: Cycle source filter (All → HN → r/linux → ...)
+- `Tab`: Cycle source filter (All → HN → Reddit → Lobsters → Lemmy → Dev.to → RSS)
 - `s`: Open settings
 - `r`: Refresh feed
 - `?`: Toggle help
@@ -70,9 +83,10 @@ go install github.com/joeyism/technews-tui@latest
 
 ### Settings
 - `j/k`: Navigate
-- `a`: Add subreddit
-- `d`: Delete subreddit
+- `a`: Add target (subreddit, Lemmy instance, RSS feed URL)
+- `d`: Delete target
 - `t`: Cycle sort order
+- `space`: Toggle source on/off
 - `Esc`: Save and back
 
 ## License
